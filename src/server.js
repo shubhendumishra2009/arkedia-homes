@@ -1,6 +1,7 @@
 const path = require('path');
 // Load environment variables first
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
+const http = require('http');
 const app = require('./app');
 const { sequelize } = require('./models');
 
