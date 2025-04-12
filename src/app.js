@@ -5,6 +5,17 @@ const helmet = require('helmet');
 const compression = require('compression');
 const { errorHandler } = require('./middleware/errorHandler');
 
+
+const corsOptions = {
+  origin: [
+    'https://arkediahomes.com', // Your production domain
+    'https://www.arkediahomes.com', // Optional: with www
+    'http://localhost:3000' // For local development
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
 // Import routes
 const authRoutes = require('./routes/auth.routes');
 const roomRoutes = require('./routes/room.routes');
@@ -17,7 +28,7 @@ const app = express();
 app.use(helmet()); // Security headers
 app.use(compression()); // Compress responses
 app.use(morgan('dev')); // Logging
-app.use(cors()); // Enable CORS
+app.use(cors(corsOptions)); // Enable CORS
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
