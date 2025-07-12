@@ -225,12 +225,18 @@ const updateRoom = async (req, res, next) => {
       throw new ApiError(`Room with ID ${id} not found`, 404);
     }
     
-    // Check if room number already exists (if changing room number)
-    if (room_no && room_no !== room.room_no) {
-      const existingRoom = await Room.findOne({ where: { room_no } });
-      if (existingRoom) {
-        throw new ApiError(`Room with number ${room_no} already exists`, 400);
+    // Check if room number already exists in the same property (if changing room_no or property_id)
+    const newRoomNo = room_no || room.room_no;
+    const newPropertyId = property_id || room.property_id;
+    const existingRoom = await Room.findOne({
+      where: {
+        room_no: newRoomNo,
+        property_id: newPropertyId,
+        id: { [Room.sequelize.Op.ne]: id }
       }
+    });
+    if (existingRoom) {
+      throw new ApiError(`Room with number ${newRoomNo} already exists in this property`, 400);
     }
     
     // Update room
