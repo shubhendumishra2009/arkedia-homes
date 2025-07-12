@@ -34,7 +34,7 @@ module.exports = {
     }
   },
   production: {
-    username: process.env.DB_USERNAME  || 'u953841782_arkediahomes',
+    username: process.env.DB_USERNAME  || 'devadmin',
     password: process.env.DB_PASSWORD || '@123DevMahapatra',
     database: process.env.DB_NAME || 'u953841782_arkedia_homes',
     host: process.env.DB_HOST || 'srv1924.hstgr.io',
