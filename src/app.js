@@ -64,6 +64,10 @@ app.use((req, res, next) => {
   res.status(404).json({ success: false, message: 'Route not found' });
 });
 
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Server is running' });
+});
+
 // Error handler middleware
 app.use(errorHandler);
 
