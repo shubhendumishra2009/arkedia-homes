@@ -1,33 +1,14 @@
+// models/tenant.js
 'use strict';
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Tenant extends Model {
     static associate(models) {
-      // define associations here
-      Tenant.belongsTo(models.User, {
-        foreignKey: 'user_id',
-        as: 'user'
-      });
-      Tenant.hasMany(models.RentPayment, {
-        foreignKey: 'tenant_id',
-        as: 'rentPayments'
-      });
-      Tenant.hasMany(models.Complaint, {
-        foreignKey: 'tenant_id',
-        as: 'complaints'
-      });
-      Tenant.hasMany(models.Notice, {
-        foreignKey: 'tenant_id',
-        as: 'notices'
-      });
-      Tenant.hasMany(models.Feedback, {
-        foreignKey: 'tenant_id',
-        as: 'feedback'
-      });
+      Tenant.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
+      Tenant.hasMany(models.TenantLease, { foreignKey: 'tenant_id', as: 'leases' });
     }
   }
-  
   Tenant.init({
     id: {
       type: DataTypes.INTEGER,
@@ -37,44 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'users',
-        key: 'id'
-      }
-    },
-    room_no: {
-      type: DataTypes.STRING(20),
-      allowNull: false,
-      unique: true
-    },
-    room_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'rooms',
-        key: 'id'
-      }
+      references: { model: 'users', key: 'id' }
     },
     join_date: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW
-    },
-    rent_amount: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false
-    },
-    security_deposit: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false
-    },
-    lease_start: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    lease_end: {
-      type: DataTypes.DATE,
-      allowNull: false
     },
     payment_due_day: {
       type: DataTypes.INTEGER,
@@ -109,6 +58,5 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
   });
-  
   return Tenant;
 };

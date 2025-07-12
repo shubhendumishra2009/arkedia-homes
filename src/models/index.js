@@ -31,6 +31,13 @@ fs
     db[model.name] = model;
   });
 
+// Register MealTariffMaster explicitly if not loaded by filename (for some setups)
+try {
+  if (!db.MealTariffMaster) {
+    db.MealTariffMaster = require('./mealTariffMaster')(sequelize, Sequelize.DataTypes);
+  }
+} catch (e) {}
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);

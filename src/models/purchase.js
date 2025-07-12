@@ -5,7 +5,10 @@ module.exports = (sequelize, DataTypes) => {
   class Purchase extends Model {
     static associate(models) {
       // define associations here
-      // No direct associations for now
+      Purchase.belongsTo(models.Vendor, {
+        foreignKey: 'vendor_id',
+        as: 'vendorInfo'
+      });
     }
   }
   

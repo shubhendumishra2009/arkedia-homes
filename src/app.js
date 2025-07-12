@@ -20,6 +20,13 @@ const corsOptions = {
 const authRoutes = require('./routes/auth.routes');
 const roomRoutes = require('./routes/room.routes');
 const tenantRoutes = require('./routes/tenant.routes');
+const tenantLeaseRoutes = require('./routes/tenantLease.routes');
+const employeeRoutes = require('./routes/employees.routes');
+const vendorRoutes = require('./routes/vendor.routes');
+const purchaseRoutes = require('./routes/purchase.routes');
+const userRoutes = require('./routes/users.routes');
+const permissionRoutes = require('./routes/permissionRoutes');
+const propertyRoutes = require('./routes/property.routes');
 
 // Initialize express app
 const app = express();
@@ -36,6 +43,15 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use('/api/tenants', tenantRoutes);
+app.use('/api/tenant-leases', tenantLeaseRoutes);
+app.use('/api/employees', employeeRoutes);
+app.use('/api/vendors', vendorRoutes);
+app.use('/api/purchases', purchaseRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/permissions', permissionRoutes);
+app.use('/api/properties', propertyRoutes);
+app.use('/api/meal-tariff-master', require('./routes/mealTariffMaster.routes'));
+
 
 // Health check route
 app.get('/health', (req, res) => {

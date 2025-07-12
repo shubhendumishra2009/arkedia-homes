@@ -6,6 +6,7 @@ const { authenticate } = require('../middleware/auth');
 // Public routes
 router.get('/', roomController.getAllRooms);
 router.get('/available', roomController.getAvailableRooms);
+router.get('/property/:propertyId', roomController.getRoomsByPropertyId);
 router.get('/:id', roomController.getRoomById);
 
 // Protected routes (admin only)

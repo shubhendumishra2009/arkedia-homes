@@ -56,5 +56,6 @@ const roleMiddleware = (roles) => {
 
 module.exports = {
   authMiddleware,
-  roleMiddleware
+  roleMiddleware,
+  authenticateToken: authMiddleware // Add alias for backward compatibility
 };
