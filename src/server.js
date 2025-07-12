@@ -1,3 +1,4 @@
+console.log('DEBUG: server.js loaded');
 const path = require('path');
 // Load environment variables first
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
