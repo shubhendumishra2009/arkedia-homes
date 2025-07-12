@@ -21,9 +21,10 @@ const PORT = process.env.PORT || 5000;
 async function startServer() {
   try {
     // Test database connection
+    console.log('✅ Attempting DB connection to:', process.env.DB_HOST, process.env.DB_NAME, process.env.DB_USERNAME);
     await sequelize.authenticate();
     console.log('✅ Connected to DB:', sequelize.config.database);
-    console.log('Database connection has been established successfully.');
+    console.log('✅ Database connected successfully to:', sequelize.config.database);
     
     // Sync database models (in development only)
     if (process.env.NODE_ENV === 'development') {
