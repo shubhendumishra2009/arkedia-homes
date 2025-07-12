@@ -8,13 +8,20 @@ const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/database')[env];
+console.log('ENV:', env, 'Loaded config:', config);
 const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+try {
+  if (config && config.use_env_variable) {
+    sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  } else if (config) {
+    sequelize = new Sequelize(config.database, config.username, config.password, config);
+  } else {
+    throw new Error('Sequelize config is undefined for env: ' + env);
+  }
+} catch (e) {
+  console.error('Error initializing Sequelize:', e);
 }
 
 fs
