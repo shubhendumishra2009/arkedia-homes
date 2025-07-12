@@ -1,4 +1,8 @@
 require('dotenv').config();
+console.log('DEBUG: DB_USERNAME =', process.env.DB_USERNAME);
+console.log('DEBUG: DB_PASSWORD =', process.env.DB_PASSWORD ? '[HIDDEN]' : undefined);
+console.log('DEBUG: DB_NAME =', process.env.DB_NAME);
+console.log('DEBUG: DB_HOST =', process.env.DB_HOST);
 
 // Configuration for different environments
 module.exports = {
