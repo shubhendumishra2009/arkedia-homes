@@ -88,25 +88,25 @@ const createRoom = async (req, res, next) => {
       has_tv,
       has_internet,
       has_private_bathroom,
-      short_term_price,
+      
       medium_term_price,
       long_term_price,
-      short_term_price_with_fooding,
+      
       medium_term_price_with_fooding,
       long_term_price_with_fooding,
-      breakfast_only_short_term,
+      
       breakfast_only_medium_term,
       breakfast_only_long_term,
-      lunch_only_short_term,
+      
       lunch_only_medium_term,
       lunch_only_long_term,
-      dinner_only_short_term,
+      
       dinner_only_medium_term,
       dinner_only_long_term,
-      bf_and_dinner_short_term,
+      
       bf_and_dinner_medium_term,
       bf_and_dinner_long_term,
-      lunch_and_dinner_short_term,
+      
       lunch_and_dinner_medium_term,
       lunch_and_dinner_long_term
     } = req.body;
@@ -140,25 +140,25 @@ const createRoom = async (req, res, next) => {
       status: status || 'available',
       description,
       image_urls,
-      short_term_price,
+      
       medium_term_price,
       long_term_price,
-      short_term_price_with_fooding,
+      
       medium_term_price_with_fooding,
       long_term_price_with_fooding,
-      breakfast_only_short_term,
+      
       breakfast_only_medium_term,
       breakfast_only_long_term,
-      lunch_only_short_term,
+      
       lunch_only_medium_term,
       lunch_only_long_term,
-      dinner_only_short_term,
+      
       dinner_only_medium_term,
       dinner_only_long_term,
-      bf_and_dinner_short_term,
+      
       bf_and_dinner_medium_term,
       bf_and_dinner_long_term,
-      lunch_and_dinner_short_term,
+      
       lunch_and_dinner_medium_term,
       lunch_and_dinner_long_term
     });
@@ -196,25 +196,25 @@ const updateRoom = async (req, res, next) => {
       has_tv,
       has_internet,
       has_private_bathroom,
-      short_term_price,
+      
       medium_term_price,
       long_term_price,
-      short_term_price_with_fooding,
+      
       medium_term_price_with_fooding,
       long_term_price_with_fooding,
-      breakfast_only_short_term,
+      
       breakfast_only_medium_term,
       breakfast_only_long_term,
-      lunch_only_short_term,
+      
       lunch_only_medium_term,
       lunch_only_long_term,
-      dinner_only_short_term,
+      
       dinner_only_medium_term,
       dinner_only_long_term,
-      bf_and_dinner_short_term,
+      
       bf_and_dinner_medium_term,
       bf_and_dinner_long_term,
-      lunch_and_dinner_short_term,
+      
       lunch_and_dinner_medium_term,
       lunch_and_dinner_long_term
     } = req.body;
@@ -251,25 +251,25 @@ const updateRoom = async (req, res, next) => {
       status: status || room.status,
       description: description || room.description,
       image_urls: image_urls || room.image_urls,
-      short_term_price: short_term_price !== undefined ? short_term_price : room.short_term_price,
+      
       medium_term_price: medium_term_price !== undefined ? medium_term_price : room.medium_term_price,
       long_term_price: long_term_price !== undefined ? long_term_price : room.long_term_price,
-      short_term_price_with_fooding: short_term_price_with_fooding !== undefined ? short_term_price_with_fooding : room.short_term_price_with_fooding,
+      
       medium_term_price_with_fooding: medium_term_price_with_fooding !== undefined ? medium_term_price_with_fooding : room.medium_term_price_with_fooding,
       long_term_price_with_fooding: long_term_price_with_fooding !== undefined ? long_term_price_with_fooding : room.long_term_price_with_fooding,
-      breakfast_only_short_term: breakfast_only_short_term !== undefined ? breakfast_only_short_term : room.breakfast_only_short_term,
+      
       breakfast_only_medium_term: breakfast_only_medium_term !== undefined ? breakfast_only_medium_term : room.breakfast_only_medium_term,
       breakfast_only_long_term: breakfast_only_long_term !== undefined ? breakfast_only_long_term : room.breakfast_only_long_term,
-      lunch_only_short_term: lunch_only_short_term !== undefined ? lunch_only_short_term : room.lunch_only_short_term,
+      
       lunch_only_medium_term: lunch_only_medium_term !== undefined ? lunch_only_medium_term : room.lunch_only_medium_term,
       lunch_only_long_term: lunch_only_long_term !== undefined ? lunch_only_long_term : room.lunch_only_long_term,
-      dinner_only_short_term: dinner_only_short_term !== undefined ? dinner_only_short_term : room.dinner_only_short_term,
+      
       dinner_only_medium_term: dinner_only_medium_term !== undefined ? dinner_only_medium_term : room.dinner_only_medium_term,
       dinner_only_long_term: dinner_only_long_term !== undefined ? dinner_only_long_term : room.dinner_only_long_term,
-      bf_and_dinner_short_term: bf_and_dinner_short_term !== undefined ? bf_and_dinner_short_term : room.bf_and_dinner_short_term,
+      
       bf_and_dinner_medium_term: bf_and_dinner_medium_term !== undefined ? bf_and_dinner_medium_term : room.bf_and_dinner_medium_term,
       bf_and_dinner_long_term: bf_and_dinner_long_term !== undefined ? bf_and_dinner_long_term : room.bf_and_dinner_long_term,
-      lunch_and_dinner_short_term: lunch_and_dinner_short_term !== undefined ? lunch_and_dinner_short_term : room.lunch_and_dinner_short_term,
+      
       lunch_and_dinner_medium_term: lunch_and_dinner_medium_term !== undefined ? lunch_and_dinner_medium_term : room.lunch_and_dinner_medium_term,
       lunch_and_dinner_long_term: lunch_and_dinner_long_term !== undefined ? lunch_and_dinner_long_term : room.lunch_and_dinner_long_term
     });

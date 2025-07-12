@@ -59,10 +59,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
-    short_term_price: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
+    
     medium_term_price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
@@ -71,10 +68,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
     },
-    short_term_price_with_fooding: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
+    
     medium_term_price_with_fooding: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
@@ -83,10 +77,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
     },
-    breakfast_only_short_term: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
+    
     breakfast_only_medium_term: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
@@ -95,10 +86,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
     },
-    lunch_only_short_term: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
+    
     lunch_only_medium_term: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
@@ -107,10 +95,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
     },
-    dinner_only_short_term: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
+    
     dinner_only_medium_term: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
@@ -119,10 +104,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
     },
-    bf_and_dinner_short_term: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
+    
     bf_and_dinner_medium_term: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
@@ -131,10 +113,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
     },
-    lunch_and_dinner_short_term: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
+    
     lunch_and_dinner_medium_term: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
@@ -200,8 +179,7 @@ module.exports = (sequelize, DataTypes) => {
       get() {
         // Return default pricing structure
         return {
-          shortTerm: this.base_rent * 1.2, // 20% premium for short term
-          mediumTerm: this.base_rent * 1.1, // 10% premium for medium term
+                    mediumTerm: this.base_rent * 1.1, // 10% premium for medium term
           longTerm: this.base_rent,         // Base rate for long term
           withFooding: this.base_rent * 1.3  // 30% premium with fooding
         };
