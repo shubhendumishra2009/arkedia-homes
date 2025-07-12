@@ -1,4 +1,3 @@
-// Debug: File last updated by Cascade AI on 2025-07-12
 'use strict';
 
 const fs = require('fs');
@@ -8,7 +7,16 @@ const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/database')[env];
+
+// ✅ Confirm loaded DB values (from config)
 console.log('ENV:', env, 'Loaded config:', config);
+console.log('From process.env directly:');
+console.log('DB_USERNAME:', process.env.DB_USERNAME);
+console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
+console.log('DB_NAME:', process.env.DB_NAME);
+console.log('DB_HOST:', process.env.DB_HOST);
+console.log('DB_PORT:', process.env.DB_PORT);
+
 const db = {};
 
 let sequelize;
@@ -24,6 +32,7 @@ try {
   console.error('Error initializing Sequelize:', e);
 }
 
+// Load models
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -40,7 +49,7 @@ fs
     db[model.name] = model;
   });
 
-// Register MealTariffMaster explicitly if not loaded by filename (for some setups)
+// Register MealTariffMaster explicitly if not loaded by filename
 try {
   if (!db.MealTariffMaster) {
     db.MealTariffMaster = require('./mealTariffMaster')(sequelize, Sequelize.DataTypes);
