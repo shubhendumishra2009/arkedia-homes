@@ -1,3 +1,4 @@
+// Debug: File last updated by Cascade AI on 2025-07-12
 'use strict';
 
 const fs = require('fs');
