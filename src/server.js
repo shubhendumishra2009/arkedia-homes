@@ -22,6 +22,7 @@ async function startServer() {
   try {
     // Test database connection
     await sequelize.authenticate();
+    console.log('✅ Connected to DB:', sequelize.config.database);
     console.log('Database connection has been established successfully.');
     
     // Sync database models (in development only)
