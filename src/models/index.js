@@ -28,6 +28,7 @@ fs
     );
   })
   .forEach(file => {
+    console.log('Attempting to require model file:', path.join(__dirname, file));
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
@@ -37,7 +38,9 @@ try {
   if (!db.MealTariffMaster) {
     db.MealTariffMaster = require('./mealTariffMaster')(sequelize, Sequelize.DataTypes);
   }
-} catch (e) {}
+} catch (e) {
+  console.error('Error loading MealTariffMaster:', e);
+}
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
