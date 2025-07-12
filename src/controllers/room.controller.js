@@ -111,10 +111,10 @@ const createRoom = async (req, res, next) => {
       lunch_and_dinner_long_term
     } = req.body;
     
-    // Check if room number already exists
-    const existingRoom = await Room.findOne({ where: { room_no } });
+    // Check if room number already exists for the same property
+    const existingRoom = await Room.findOne({ where: { room_no, property_id } });
     if (existingRoom) {
-      throw new ApiError(`Room with number ${room_no} already exists`, 400);
+      throw new ApiError(`Room with number ${room_no} already exists in this property`, 400);
     }
     
     // Validate property_id is provided

@@ -26,8 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     room_no: {
       type: DataTypes.STRING(20),
-      allowNull: false,
-      unique: true
+      allowNull: false
     },
     property_id: {
       type: DataTypes.INTEGER,
@@ -203,6 +202,20 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at'
+  }, {
+    sequelize,
+    modelName: 'Room',
+    tableName: 'rooms',
+    underscored: true,
+    timestamps: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+    indexes: [
+      {
+        unique: true,
+        fields: ['property_id', 'room_no']
+      }
+    ]
   });
   
   return Room;
