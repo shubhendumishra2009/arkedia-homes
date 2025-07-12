@@ -2,6 +2,15 @@ console.log('DEBUG: server.js loaded');
 const path = require('path');
 // Load environment variables first
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
+
+// ✅ Print out key DB env variables
+console.log('ENV FILE VALUES:');
+console.log('DB_USERNAME:', process.env.DB_USERNAME);
+console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
+console.log('DB_NAME:', process.env.DB_NAME);
+console.log('DB_HOST:', process.env.DB_HOST);
+console.log('DB_PORT:', process.env.DB_PORT);
+
 const http = require('http');
 const app = require('./app');
 const { sequelize } = require('./models');
