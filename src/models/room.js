@@ -121,6 +121,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true
     },
+    booking_amount: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: true
+    },
+    security_deposit: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: true
+    },
     is_furnished: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

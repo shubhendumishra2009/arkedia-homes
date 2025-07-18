@@ -1,5 +1,6 @@
 const { Room, Tenant, TenantLease } = require('../models');
 const { ApiError } = require('../middleware/errorHandler');
+const { Op } = require('sequelize');
 
 /**
  * Get all rooms
@@ -108,7 +109,9 @@ const createRoom = async (req, res, next) => {
       bf_and_dinner_long_term,
       
       lunch_and_dinner_medium_term,
-      lunch_and_dinner_long_term
+      lunch_and_dinner_long_term,
+      booking_amount,
+      security_deposit
     } = req.body;
     
     // Check if room number already exists for the same property
@@ -160,7 +163,9 @@ const createRoom = async (req, res, next) => {
       bf_and_dinner_long_term,
       
       lunch_and_dinner_medium_term,
-      lunch_and_dinner_long_term
+      lunch_and_dinner_long_term,
+      booking_amount,
+      security_deposit
     });
     
     res.status(201).json({
@@ -216,7 +221,9 @@ const updateRoom = async (req, res, next) => {
       bf_and_dinner_long_term,
       
       lunch_and_dinner_medium_term,
-      lunch_and_dinner_long_term
+      lunch_and_dinner_long_term,
+      booking_amount,
+      security_deposit
     } = req.body;
     
     // Find room
@@ -232,7 +239,7 @@ const updateRoom = async (req, res, next) => {
       where: {
         room_no: newRoomNo,
         property_id: newPropertyId,
-        id: { [Room.sequelize.Op.ne]: id }
+        id: { [Op.ne]: id }
       }
     });
     if (existingRoom) {
@@ -277,7 +284,9 @@ const updateRoom = async (req, res, next) => {
       bf_and_dinner_long_term: bf_and_dinner_long_term !== undefined ? bf_and_dinner_long_term : room.bf_and_dinner_long_term,
       
       lunch_and_dinner_medium_term: lunch_and_dinner_medium_term !== undefined ? lunch_and_dinner_medium_term : room.lunch_and_dinner_medium_term,
-      lunch_and_dinner_long_term: lunch_and_dinner_long_term !== undefined ? lunch_and_dinner_long_term : room.lunch_and_dinner_long_term
+      lunch_and_dinner_long_term: lunch_and_dinner_long_term !== undefined ? lunch_and_dinner_long_term : room.lunch_and_dinner_long_term,
+      booking_amount: booking_amount !== undefined ? booking_amount : room.booking_amount,
+      security_deposit: security_deposit !== undefined ? security_deposit : room.security_deposit
     });
     
     res.status(200).json({

@@ -58,14 +58,18 @@ const getTenantById = async (req, res, next) => {
 /**
  * Create a new tenant
  */
+const bcrypt = require('bcryptjs');
+
 const createTenant = async (req, res, next) => {
   try {
     const { name, email, phone, payment_due_day, status, notes, user_id } = req.body;
     let userId = user_id;
     if (!userId) {
-      // Create a new user
+      // Create a new user with default password '654321'
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash('654321', salt);
       const newUser = await User.create({
-        name, email, phone, role: 'tenant', password: Math.random().toString(36).slice(-8)
+        name, email, phone, role: 'tenant', password: hashedPassword
       });
       userId = newUser.id;
     }

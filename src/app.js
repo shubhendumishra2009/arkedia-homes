@@ -52,6 +52,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/permissions', permissionRoutes);
 app.use('/api/properties', propertyRoutes);
 app.use('/api/meal-tariff-master', require('./routes/mealTariffMaster.routes'));
+app.use('/api', require('./routes/bookingTenant.routes'));
 
 
 // Health check route
